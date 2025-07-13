@@ -1,4 +1,4 @@
-# PADL: Processor Architecture Detector Language
+# MPADT: Muhamix Processor Architecture Detector Tool
 
 PADL is a lightweight domain-specific language to define architecture-specific build and run rules for your OS kernel or low-level projects.
 
@@ -20,7 +20,7 @@ With PADL, you describe which assembly or source files to build and run for diff
 You don't need to install padl to work with it, you just need to install [padli](https://github.com/Muhamix/PADLI). But, if you want to edit it and add more feature for yourself, clone the repo:
 
 ```bash
-git clone https://github.com/Muhamix/PADL.git
+git clone https://github.com/Muhamix/MPADT.git
 ```
 
 ---
@@ -31,12 +31,13 @@ Here's some example syntax:
 
 ```padl
 arch {
-    x86 -> "textx86.s"
+    x86 -> "testx86.s"
     arm -> "testarm.s"
+    x86 -> "text86_64s.s"
 }
 ```
 
-There can only be one `arch` block, but it can contain as many checks as you need.
+There can only be one `arch` block, but it can contain as many architecture checks as you need.
 
 You can test it with the included `test/` directory:
 
