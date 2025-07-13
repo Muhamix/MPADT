@@ -2,7 +2,7 @@
 
 PADL is a lightweight domain-specific language to define architecture-specific build and run rules for your OS kernel or low-level projects.
 
-With PADL, you describe which assembly or source files to build and run for different CPU architectures in a simple, human-readable syntax — then `padl` compiles and runs the correct files automatically based on your system architecture.
+With PADL, you describe which assembly or source files to build and run for different CPU architectures in a simple, human-readable syntax, then `padli` compiles and runs the correct files automatically based on your system architecture.
 
 ---
 
