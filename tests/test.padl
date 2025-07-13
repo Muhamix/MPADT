@@ -1,0 +1,4 @@
+arch {
+    x86 -> "testx86.s"
+    arm -> "testarm.s"
+}
