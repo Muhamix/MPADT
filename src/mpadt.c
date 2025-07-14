@@ -91,6 +91,7 @@ int main(int argc, char **argv) {
             }
             int res = system(cmd);
             if (res != 0) fprintf(stderr, "Command failed: %s\n", cmd);
+            else remove(rules[i].files.file);
             break;
         }
     }
