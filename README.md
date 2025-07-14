@@ -1,8 +1,8 @@
 # MPADT: Muhamix Processor Architecture Detector Tool
 
-PADL is a lightweight domain-specific language to define architecture-specific build and run rules for your OS kernel or low-level projects.
+MPADT is a lightweight domain-specific language to define architecture-specific build and run rules for your OS kernel or low-level projects.
 
-With PADL, you describe which assembly or source files to build and run for different CPU architectures in a simple, human-readable syntax, then `padli` compiles and runs the correct files automatically based on your system architecture.
+With MPADT, you describe which assembly or source files to build and run for different CPU architectures in a simple, human-readable syntax, then [MPADT Executor](https://github.com/Muhamix/MPADTE) compiles and runs the correct files automatically based on your system architecture.
 
 ---
 
@@ -17,7 +17,7 @@ With PADL, you describe which assembly or source files to build and run for diff
 
 ## Installation
 
-You don't need to install padl to work with it, you just need to install [padli](https://github.com/Muhamix/PADLI). But, if you want to edit it and add more feature for yourself, clone the repo:
+You don't need to install MPADT to work with it, you just need to install [MPADTE](https://github.com/Muhamix/MPADTE). But, if you want to edit it and add more feature for yourself, clone the repo:
 
 ```bash
 git clone https://github.com/Muhamix/MPADT.git
@@ -37,7 +37,7 @@ arch {
 }
 ```
 
-There can only be one `arch` block, but it can contain as many architecture checks as you need.
+There can only be one `arch` block, but it can contain as many architecture checks as you need, even of the same architecture.
 
 You can test it with the included `test/` directory:
 
@@ -45,8 +45,8 @@ You can test it with the included `test/` directory:
 # Clone the repo
 git clone https://github.com/Muhamix/PADL.git
 
-cd ~/PADL/tests
-../build/padl ./test.padl
+cd ~/MPADT/tests
+../build/mpadt ./test.mpadt
 ```
 
 ---
