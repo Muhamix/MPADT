@@ -9,9 +9,9 @@ typedef enum {
     TOKEN_STRING,
     TOKEN_COMMA,
     TOKEN_UNKNOWN
-} TokenType;
+} tokentype;
 typedef struct {
-    TokenType type;
+    tokentype type;
     char *lexeme;
 } Token;
 void init_lexer(const char *source);

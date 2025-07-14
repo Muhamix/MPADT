@@ -17,7 +17,7 @@ static void error(const char *msg) {
     fprintf(stderr, "Parse error: %s\n", msg);
     exit(1);
 }
-static void consume(TokenType type) {
+static void consume(tokentype type) {
     if (current_token.type != type) error("Unexpected token");
     free_token(current_token);
     current_token = get_next_token();
@@ -29,7 +29,7 @@ static char *expect_identifier() {
     current_token = get_next_token();
     return id;
 }
-static void expect(TokenType type) {
+static void expect(tokentype type) {
     if (current_token.type != type) error("Unexpected token");
     free_token(current_token);
     current_token = get_next_token();

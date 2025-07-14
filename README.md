@@ -29,15 +29,15 @@ git clone https://github.com/Muhamix/MPADT.git
 
 Here's some example syntax:
 
-```padl
+```mpadt
 arch {
-    x86 -> "testx86.s"
-    arm -> "testarm.s"
-    x86 -> "text86_64s.s"
+    x86 -> "x86.s"
+    arm -> "arm.s"
+    x86 -> "86_64.s"
 }
 ```
 
-There can only be one `arch` block, but it can contain as many architecture checks as you need, even of the same architecture.
+There can only be one `arch` block, but it can contain as many architecture checks as you need, even of the same architecture. The path to the Assembly file will not be configured automatically, it must be written as a relative path.
 
 You can test it with the included `test/` directory:
 

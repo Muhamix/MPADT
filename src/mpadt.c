@@ -29,17 +29,17 @@ const char *detect_arch() {
         }
         return NULL;
     #elif defined(_WIN32) || defined(_WIN64)
-    if (iswin) {
         SYSTEM_INFO sysinfo;
         GetNativeSystemInfo(&sysinfo);
         switch (sysinfo.wProcessorArchitecture) {
+            case PROCESSOR_ARCHITECTURE_INTEL:
             case PROCESSOR_ARCHITECTURE_AMD64:
                 return "x86";
+            case PROCESSOR_ARCHITECTURE_ARM:
             case PROCESSOR_ARCHITECTURE_ARM64:
                 return "arm";
             default:
                 return NULL;
-        }
     }
     #endif
     return NULL;
@@ -91,7 +91,7 @@ int main(int argc, char **argv) {
             }
             int res = system(cmd);
             if (res != 0) fprintf(stderr, "Command failed: %s\n", cmd);
-            else remove(rules[i].files.file);
+            else {remove("out");remove("out.o");}
             break;
         }
     }

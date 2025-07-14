@@ -10,7 +10,7 @@ void init_lexer(const char *source) {
     pos = 0;
 }
 static void skip_whitespace() {while (isspace(input[pos])) pos++;}
-static Token make_token(TokenType type, const char *start, size_t length) {
+static Token make_token(tokentype type, const char *start, size_t length) {
     Token t;
     t.type = type;
     t.lexeme = malloc(length + 1);
