@@ -12,6 +12,13 @@
 #endif
 #include "../include/lexer.h"
 #include "../include/parser.h"
+int ends_with(const char *str, const char *suff) {
+    if (!str || !suff) return 0;
+    size_t len = strlen(str);
+    size_t slen = strlen(suff);
+    if (slen > len) return 0;
+    return strcmp(str + len - slen, suff) == 0;
+}
 const char *detect_arch() {
     #if defined(__linux__)
         struct utsname buf;
@@ -46,8 +53,12 @@ const char *detect_arch() {
 }
 int main(int argc, char **argv) {
     if (argc != 2) {
-        printf("Usage: %s <file.padl>\n", argv[0]);
+        printf("Usage: %s <file.mpadt>\n", argv[0]);
         return 1;
+    }
+    if (!ends_with(argv[1], ".mpadt")) {
+        printf("Unknown file type: please make sure the extention is .mpadt\n");
+        exit(1);
     }
     char path[256];
     char *last_slash = strrchr(argv[1], '/');
@@ -70,18 +81,15 @@ int main(int argc, char **argv) {
         fprintf(stderr, "Unknown architecture\n");
         return 1;
     }
-    printf("Detected arch: %s\n", host_arch);
     int matched = 0;
     for (int i = 0; i < count; i++) {
         if (strcmp(rules[i].arch_name, host_arch) == 0) {
             matched = 1;
-            printf("Matching rule found for %s\n", host_arch);
             rules[i].files.file = strcat(path, rules[i].files.file);
             if (access(rules[i].files.file, F_OK) != 0) {
                 fprintf(stderr, "ERROR: File not found: %s\n", rules[i].files.file);
                 return 1;
             }
-            printf("Compiling and running: \"%s\"\n", rules[i].files.file);
             char cmd[512];
             if (strcmp(host_arch, "x86") == 0) snprintf(cmd, sizeof(cmd), "as --32 -o out.o %s && ld -m elf_i386 -o out out.o && ./out", rules[i].files.file);
             else if (strcmp(host_arch, "arm") == 0) snprintf(cmd, sizeof(cmd), "aarch64-linux-gnu-as -o out.o %s && aarch64-linux-gnu-ld -o out out.o && qemu-aarch64 ./out", rules[i].files.file);

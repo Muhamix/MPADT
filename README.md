@@ -41,12 +41,37 @@ There can only be one `arch` block, but it can contain as many architecture chec
 
 You can test it with the included `test/` directory:
 
-```bash
-# Clone the repo
-git clone https://github.com/Muhamix/PADL.git
+---
 
+## Run test
+
+clone the repo:
+
+```bash
+git clone https://github.com/Muhamix/PADL.git
+```
+
+### Linux/Mac
+
+```bash
 cd ~/MPADT/tests
 ../build/mpadt ./test.mpadt
+```
+
+### Windows
+
+#### Batch
+
+```bat
+cd C:\Users\%USERNAME\MPADT\tests
+..\build\mpadt.exe .\test.mpadt
+```
+
+#### PowerShell
+
+```ps1
+cd "C:\Users\$env:USERNAME\MPADT\tests"
+..\build\mpadt.exe .\test.mpadt
 ```
 
 ---
