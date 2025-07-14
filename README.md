@@ -63,7 +63,7 @@ cd ~/MPADT/tests
 #### Batch
 
 ```bat
-cd C:\Users\%USERNAME\MPADT\tests
+cd C:\Users\%USERNAME%\MPADT\tests
 ..\build\mpadt.exe .\test.mpadt
 ```
 
